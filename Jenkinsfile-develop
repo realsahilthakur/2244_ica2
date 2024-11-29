@@ -16,7 +16,7 @@ pipeline {
         stage('Build and Run Docker Image') {
             steps {
                 sh 'docker stop dev-container || true && docker rm dev-container || true'
-                sh 'docker build -t snehakaimal27/2244_ica2 .'
+                sh 'docker build -t realsahilthakur/2244_ica2 .'
                 sh "docker tag realsahilthakur/2244_ica2 realsahilthakur/2244_ica2:develop-${env.BUILD_ID}"
                 sh 'docker run -d --name dev-container -p 8081:80 realsahilthakur/2244_ica2'
             }
