@@ -4,14 +4,11 @@ pipeline {
         stage('Build and run docker image') {
             steps {
                 sh '''
-                    # Stop and remove the container if it exists
                     docker stop dev-container || true
                     docker rm dev-container || true
 
-                    # Pull the latest Docker image
                     docker pull realsahilthakur/2244_ica2:latest
 
-                    # Run the container on port 8084
                     docker run --name dev-container -d -p 8084:80 realsahilthakur/2244_ica2:latest
                 '''
             }
