@@ -16,15 +16,15 @@ pipeline {
         stage('Build and Run Docker Image') {
             steps {
                 sh 'docker stop dev-container || true && docker rm dev-container || true'
-                sh 'docker build -t realsahilthakur/2244_ica2 .'
-                sh "docker tag realsahilthakur/2244_ica2 realsahilthakur/2244_ica2:develop-${env.BUILD_ID}"
-                sh 'docker run -d --name dev-container -p 8081:80 realsahilthakur/2244_ica2'
+                sh 'docker build -t snehakaimal27/2244_ica2 .'
+                sh "docker tag snehakaimal27/2244_ica2 snehakaimal27/2244_ica2:develop-${env.BUILD_ID}"
+                sh 'docker run -d --name dev-container -p 8081:80 snehakaimal27/2244_ica2'
             }
         }
 
         stage('Test Container') {
             steps {
-                sh 'curl -I http://192.168.196.139:8081'
+                sh 'curl -I http://192.168.80.133:8081'
             }
         }
 
@@ -32,8 +32,8 @@ pipeline {
             steps {
                 withCredentials([usernamePassword(credentialsId: 'dockerhub-auth', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) {
                     sh 'docker login -u ${USERNAME} -p ${PASSWORD}'
-                    sh 'docker push realsahilthakur/2244_ica2'
-                    sh "docker push realsahilthakur/2244_ica2:develop-${env.BUILD_ID}"                    
+                    sh 'docker push snehakaimal27/2244_ica2'
+                    sh "docker push snehakaimal27/2244_ica2:develop-${env.BUILD_ID}"                    
                 }
             }
         }
