@@ -9,7 +9,7 @@ pipeline {
 
                     docker pull realsahilthakur/2244_ica2:latest
 
-                    docker run --name dev-container -d -p 8084:80 realsahilthakur/2244_ica2:latest
+                    docker run --name sahil -d -p 8084:80 realsahilthakur/2244_ica2:latest
                 '''
             }
         }
