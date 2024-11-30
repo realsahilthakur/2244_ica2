@@ -9,7 +9,7 @@ pipeline {
 
                     docker pull realsahilthakur/2244_ica2:latest
 
-                    docker run --name sahil -d -p 8084:80 realsahilthakur/2244_ica2:latest
+                    docker run --name sahil -d -p 8082:80 realsahilthakur/2244_ica2:latest
                 '''
             }
         }
@@ -17,7 +17,7 @@ pipeline {
             steps {
                 sh '''
                     # Test the running container
-                    curl -I http://192.168.196.139:8084
+                    curl -I http://192.168.196.139:8082
                 '''
             }
         }
