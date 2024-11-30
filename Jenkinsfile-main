@@ -3,13 +3,14 @@ pipeline {
     stages {
         stage('Build and run docker image') {
             steps {
+                sh 'docker stop realsahilthakur/2244_ica2:latest'
                 sh 'docker pull realsahilthakur/2244_ica2:latest'
                 sh 'docker run --name dev-container -d -p 8082:80 realsahilthakur/2244_ica2:latest'
             }
         }
         stage('Testing') {
             steps {
-                sh 'curl -I http://192.168.196.139:8081'
+                sh 'curl -I http://192.168.196.139:8080'
             }
         }
     }
