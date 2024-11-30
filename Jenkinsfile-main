@@ -3,10 +3,10 @@ pipeline {
     stages {
         stage('Build and run docker image') {
             steps {
-                sh 'docker stop realsahilthakur/2244_ica2:latest'
-                sh 'docker pull realsahilthakur/2244_ica2:latest'
-                sh 'docker run --name dev-container -d -p 8082:80 realsahilthakur/2244_ica2:latest'
-            }
+                sh 'docker stop realsahilthakur/2244_ica2:latest || true && docker rm realsahilthakur/2244_ica2:latest || true'
+                sh 'sudo docker pull realsahilthakur/2244_ica2:latest'
+                sh 'sudo docker run -d -p 8084:80 realsahilthakur/2244_ica2:latest'
+            } 
         }
         stage('Testing') {
             steps {
