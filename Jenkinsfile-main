@@ -4,8 +4,8 @@ pipeline {
         stage('Build and run docker image') {
             steps {
                 sh '''
-                    docker stop dev-container || true
-                    docker rm dev-container || true
+                    docker stop sahil || true
+                    docker rm sahil || true
 
                     docker pull realsahilthakur/2244_ica2:latest
 
